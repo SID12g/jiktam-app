@@ -32,26 +32,24 @@ function Login({ onLogin }) {
   };
 
   const handleSignUp = async e => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
-
-      if (error) throw error;
-
-      if (data.user) {
-        setError('가입 확인 이메일을 확인해주세요.');
-      }
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
+    alert('회원가입 기능이 제한되었습니다. 관리자에게 문의 바랍니다.');
+    // e.preventDefault();
+    // setLoading(true);
+    // setError(null);
+    // try {
+    //   const { data, error } = await supabase.auth.signUp({
+    //     email,
+    //     password,
+    //   });
+    //   if (error) throw error;
+    //   if (data.user) {
+    //     setError('가입 확인 이메일을 확인해주세요.');
+    //   }
+    // } catch (error) {
+    //   setError(error.message);
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   return (
