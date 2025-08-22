@@ -67,12 +67,14 @@ function Content({ user, onLogout }) {
         <div className='notion-error-state'>
           <h2>오류가 발생했습니다</h2>
           <p>{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className='notion-button notion-button-primary'
-          >
-            다시 시도
-          </button>
+          <div>
+            <button
+              onClick={() => window.location.reload()}
+              className='notion-button notion-button-primary'
+            >
+              다시 시도
+            </button>
+          </div>
         </div>
       </div>
     );
