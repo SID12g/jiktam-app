@@ -2,6 +2,7 @@
   "name": "jiktam-app",
   "version": "1.0.0",
   "description": "Jiktam App",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
@@ -19,10 +20,12 @@
   "license": "MIT",
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "prettier": "^3.6.2",
     "vite": "^5.0.8",
     "vite-plugin-pwa": "^0.17.4"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.56.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

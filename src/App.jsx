@@ -1,14 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Content from './components/Content';
+import Login from './components/Login';
+import { supabase } from './supabase';
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 현재 세션 확인
+    const getSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+      setLoading(false);
+    };
+
+    getSession();
+
+    // 인증 상태 변경 감지
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogin = user => {
+    setUser(user);
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+  };
+
+  if (loading) {
+    return (
+      <div className='notion-loading-screen'>
+        <div className='text-center'>
+          <div className='notion-loading-spinner'></div>
+          <p className='notion-loading-text'>로딩 중...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <iframe
-      src="https://jiktam-ui-sin.notion.site/ebd/257282c30e2580cdb26cddc13c3f4872?v=257282c30e258063b3ab000c55327d05"
-      width="100%"
-      height="100%"
-      frameborder="0"
-      allowfullscreen
-    />
+    <div className='App'>
+      {user ? (
+        <Content user={user} onLogout={handleLogout} />
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
+    </div>
   );
 }
 
