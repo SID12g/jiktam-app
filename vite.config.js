@@ -15,6 +15,7 @@ export default defineConfig({
         'icons/icon-128x128.png',
         'icons/icon-144x144.png',
         'icons/icon-152x152.png',
+        'icons/icon-180x180.png',
         'icons/icon-192x192.png',
         'icons/icon-256x256.png',
         'icons/icon-384x384.png',
@@ -59,6 +60,11 @@ export default defineConfig({
           {
             src: '/icons/icon-152x152.png',
             sizes: '152x152',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/icon-180x180.png',
+            sizes: '180x180',
             type: 'image/png'
           },
           {
