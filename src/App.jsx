@@ -41,10 +41,10 @@ function App() {
 
   if (loading) {
     return (
-      <div className='notion-loading-screen'>
-        <div className='text-center'>
+      <div className='notion-content-fullscreen'>
+        <div className='notion-loading-iframe'>
           <div className='notion-loading-spinner'></div>
-          <p className='notion-loading-text'>로딩 중...</p>
+          <p>로딩 중...</p>
         </div>
       </div>
     );
